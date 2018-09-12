@@ -38,25 +38,27 @@ namespace eu.sig.cspacman.ui
 		}
 
 		private void render(IBoard board, Graphics g, Size window) {
-			int cellW = window.Width / board.Width;
-			int cellH = window.Height / board.Height;
+            Rectangle rect = new Rectangle();
+
+			rect .Width = window.Width / board.Width;
+			rect.Height = window.Height / board.Height;
 
 			g.Clear(BACKGROUND_COLOR);
 
 			for (int y = 0; y < board.Height; y++) {
 				for (int x = 0; x < board.Width; x++) {
-					int cellX = x * cellW;
-					int cellY = y * cellH;
+					rect.X = x * rect.Width;
+					rect.Y = y * rect.Height;
 					Square square = board.SquareAt(x, y);
-					render(square, g, cellX, cellY, cellW, cellH);
+					render(square, g, rect);
 				}
 			}
 		}
 
-		private void render(Square square, Graphics g, int x, int y, int w, int h) {
-			square.Sprite.draw(g, x, y, w, h);
+		private void render(Square square, Graphics g, Rectangle rect) {
+			square.Sprite.draw(g, rect);
 			foreach (Unit unit in square.Occupants) {
-				unit.Sprite.draw(g, x, y, w, h);
+				unit.Sprite.draw(g,rect);
 			}
 		}
 	}

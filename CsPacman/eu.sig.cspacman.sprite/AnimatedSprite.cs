@@ -57,16 +57,16 @@ namespace eu.sig.cspacman.sprite
             setAnimating(true);
         }
 
-        public void draw(Graphics g, int x, int y, int width, int height)
+        public void draw(Graphics g, Rectangle rect)
         {
             update();
-            currentSprite().draw(g, x, y, width, height);
+            currentSprite().draw(g, rect);
         }
 
-        public ISprite split(int x, int y, int width, int height)
+        public ISprite split(Rectangle rect)
         {
             update();
-            return currentSprite().split(x, y, width, height);
+            return currentSprite().split(rect);
         }
 
         private void update()

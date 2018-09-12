@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.IO;
 using NUnit.Framework;
 
@@ -49,19 +50,22 @@ namespace eu.sig.cspacman.sprite
 
 		[Test]
 		public void splitWidth() {
-			ISprite split = sprite.split(10, 11, 12, 13);
+            Rectangle rect = new Rectangle { X = 10, Y = 11, Width = 12, Height = 13 };
+			ISprite split = sprite.split(rect);
 			Assert.AreEqual(12, split.getWidth());
 		}
 
 		[Test]
 		public void splitHeight() {
-			ISprite split = sprite.split(10, 11, 12, 13);
+            Rectangle rect = new Rectangle { X = 10, Y = 11, Width = 12, Height = 13 };
+            ISprite split = sprite.split(rect);
 			Assert.AreEqual(13, split.getHeight());
 		}
 
 		[Test()]
 		public void splitOutOfBounds() {
-			ISprite split = sprite.split(10, 10, 64, 10);
+            Rectangle rect = new Rectangle { X = 10, Y = 11, Width = 12, Height = 13 };
+            ISprite split = sprite.split(rect);
 			Assert.IsTrue(split is EmptySprite);
 		}
 	}

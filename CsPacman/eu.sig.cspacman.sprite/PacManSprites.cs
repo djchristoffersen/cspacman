@@ -46,8 +46,7 @@ namespace eu.sig.cspacman.sprite
             ISprite baseImage = loadSprite(resource);
             for (int i = 0; i < DIRECTIONS.Length; i++)
             {
-                ISprite directionSprite = baseImage.split(0, i * SPRITE_SIZE, frames
-                        * SPRITE_SIZE, SPRITE_SIZE);
+                ISprite directionSprite = baseImage.split(new System.Drawing.Rectangle { X = 0, Y = i * SPRITE_SIZE, Width = frames * SPRITE_SIZE, Height = SPRITE_SIZE });
                 AnimatedSprite animation = createAnimatedSprite(directionSprite,
                         frames, ANIMATION_DELAY, true);
                 animation.setAnimating(true);

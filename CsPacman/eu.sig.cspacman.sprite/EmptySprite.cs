@@ -4,11 +4,11 @@ namespace eu.sig.cspacman.sprite
 {
 	public class EmptySprite : ISprite {
 
-		public void draw(Graphics g, int x, int y, int width, int height) {
+		public void draw(Graphics g,Rectangle rect) {
 			// nothing to draw.
 		}
 
-		public ISprite split(int x, int y, int width, int height) {
+		public ISprite split(Rectangle rect) {
 			return new EmptySprite();
 		}
 

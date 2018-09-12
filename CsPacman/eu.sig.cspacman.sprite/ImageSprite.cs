@@ -12,18 +12,18 @@ namespace eu.sig.cspacman.sprite
             this.image = img;
         }
 
-        public void draw(Graphics g, int x, int y, int width, int height)
+        public void draw(Graphics g, Rectangle rect)
         {
-            g.DrawImage(image, x, y);
+            g.DrawImage(image, rect.Location);
         }
 
-        public ISprite split(int x, int y, int width, int height)
+        public ISprite split(Rectangle rect)
         {
             // TODO: maybe factor out Image (replace it by Bitmap everywhere)?
             System.Diagnostics.Debug.Assert(image is Bitmap);
-            if (withinImage(x, y) && withinImage(x + width - 1, y + height - 1))
+            if (withinImage(rect.X, rect.Y) && withinImage(rect.X + rect.Width - 1, rect.Y + rect.Height - 1))
             {
-                Bitmap newImage = ((Bitmap)image).Clone(new Rectangle(x, y, width, height), image.PixelFormat);
+                Bitmap newImage = ((Bitmap)image).Clone(rect, image.PixelFormat);
                 return new ImageSprite(newImage);
             }
             return new EmptySprite();

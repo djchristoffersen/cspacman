@@ -53,8 +53,7 @@ namespace eu.sig.cspacman.sprite
             ISprite[] animation = new ISprite[frames];
             for (int i = 0; i < frames; i++)
             {
-                animation[i] = baseImage.split(i * frameWidth, 0, frameWidth,
-                        baseImage.getHeight());
+                animation[i] = baseImage.split(new Rectangle { X = i * frameWidth, Y = 0, Width = frameWidth, Height = baseImage.getHeight() });
             }
 
             return new AnimatedSprite(animation, delay, loop);
